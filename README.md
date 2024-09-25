@@ -1,1 +1,1 @@
-# cs7641-project
+# CS7641 Project Proposal - AITA Classifier
