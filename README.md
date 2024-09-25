@@ -1,6 +1,6 @@
 # CS7641 Project Proposal - AITA Classifier
 
-Introduction/Background (James)
+##Introduction/Background (James)
 
 Literature Review (Need to shorten?)
 
