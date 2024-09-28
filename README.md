@@ -73,7 +73,18 @@ Our first goal is to develop a binary classifier that given a post, accurately p
 
 ## Contribution Table
 
-![Contribution Table]("https://github.com/user-attachments/assets/18db1b71-a8b5-43de-8cb5-fc3d4a2aec88")
+| Name | Proposal Contributions |
+|---|---|
+| All | Idea brainstorming (3 per person) |
+| All | Disscussion + finalization |
+| All | References |
+| Kyu Yeon | Introduction & Background |
+| Lex | Problem Definition |
+| Dingu/Ethan | Methods (Data preprocessing, models, methods) |
+| Yuto | Potential Results & Discussion |
+| Ethan | Video Recording |
+| Dingu | Github Pages |
+| Yuto | Gantt Chart, Contribution Table |
 
 ## Gantt Chart
 
