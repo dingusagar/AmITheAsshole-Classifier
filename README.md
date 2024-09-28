@@ -71,6 +71,13 @@ We will employ standard performance metrics for binary classifier including Prec
 
 Our first goal is to develop a binary classifier that given a post, accurately predict whether the author is considered "the `A*hole`" or "Not the `A*hole`". Secondly, we aim to make the model interpretable by identifying the words and phrases that contribute the most to the each prediction.
 
+## Contribution Table
+<img width="350" alt="image" src="https://github.com/user-attachments/assets/18db1b71-a8b5-43de-8cb5-fc3d4a2aec88">
+
+
+## Gantt Chart
+[Link](https://docs.google.com/spreadsheets/d/18YNVB-EbJJxHQ7TgGCrHxtCeOkt0s-LmVG50PYV-BY0/edit?usp=sharing)
+
 ## References
 
 * [1] D. Küçük and F. Can, “Stance Detection,” ACM Computing Surveys, vol. 53, no. 1, pp. 1–37, Feb. 2020, doi: <https://doi.org/10.1145/3369026>.
@@ -81,5 +88,4 @@ Our first goal is to develop a binary classifier that given a post, accurately p
 * [6] K. Pham, “Text Classification with BERT,” Medium, May 09, 2023. <https://medium.com/@khang.pham.exxact/text-classification-with-bert-7afaacc5e49b>
 * [7] “sentence-transformers/all-MiniLM-L12-v2 · Hugging Face,” huggingface.co, Jun. 08, 2023. <https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2>
 ‌
-## Gantt Chart
 
