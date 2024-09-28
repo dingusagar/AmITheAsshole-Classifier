@@ -23,7 +23,7 @@ Relevant features are:
 
 ## Problem Definition
 
-Develop ML model to classify posts from the r/AmItheAhole (AITA) subreddit, determining whether the author is considered "the `A*hole`" or "Not the `A*hole`" based on the post content. Generate text explaining the classification.
+Develop ML model to classify posts from the AITA subreddit, determining whether the author is considered "the `A*hole`" or "Not the `A*hole`" based on the post content. Generate text explaining the classification.
 
 This project aims to:
 
@@ -81,3 +81,5 @@ Our first goal is to develop a binary classifier that given a post, accurately p
 * [6] K. Pham, “Text Classification with BERT,” Medium, May 09, 2023. <https://medium.com/@khang.pham.exxact/text-classification-with-bert-7afaacc5e49b>
 * [7] “sentence-transformers/all-MiniLM-L12-v2 · Hugging Face,” huggingface.co, Jun. 08, 2023. <https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2>
 ‌
+## Gantt Chart
+
