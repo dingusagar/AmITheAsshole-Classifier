@@ -72,10 +72,11 @@ We will employ standard performance metrics for binary classifier including Prec
 Our first goal is to develop a binary classifier that given a post, accurately predict whether the author is considered "the `A*hole`" or "Not the `A*hole`". Secondly, we aim to make the model interpretable by identifying the words and phrases that contribute the most to the each prediction.
 
 ## Contribution Table
-<img width="350" alt="image" src="https://github.com/user-attachments/assets/18db1b71-a8b5-43de-8cb5-fc3d4a2aec88">
 
+![Contribution Table]("https://github.com/user-attachments/assets/18db1b71-a8b5-43de-8cb5-fc3d4a2aec88")
 
 ## Gantt Chart
+
 [Link](https://docs.google.com/spreadsheets/d/18YNVB-EbJJxHQ7TgGCrHxtCeOkt0s-LmVG50PYV-BY0/edit?usp=sharing)
 
 ## References
