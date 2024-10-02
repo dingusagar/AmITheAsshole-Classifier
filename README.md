@@ -1,6 +1,6 @@
 # CS7641 Project Proposal - AITA Classifier
 
-[![Proposal Video](https://github-production-user-asset-6210df.s3.amazonaws.com/12700858/373034473-5a4a1e9a-215a-4732-a8ce-66d28fb3de88.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241002%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241002T211526Z&X-Amz-Expires=300&X-Amz-Signature=9574dd850611e8e48611049f66053208221622866e9eba30eaf6f24f3b20a8c3&X-Amz-SignedHeaders=host)](https://youtu.be/GSvZh8ADVoU)
+[![Proposal Video](https://drive.usercontent.google.com/download?id=1jTouGDHJU9t7MMBemySy7bIuhR6zQfb_&export=view&authuser=0)](https://youtu.be/GSvZh8ADVoU)
 
 ## Introduction
 
