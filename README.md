@@ -20,6 +20,7 @@ Relevant features are:
 1. `Title` \[text\]
 2. `Body` \[text\]
 3. `Verdict` \[binary\]
+4. `Comments` \[text\]
 
 ## Problem Definition
 
