@@ -1,5 +1,7 @@
 # CS7641 Project Proposal - AITA Classifier
 
+[![Proposal Video](https://github.com/user-attachments/assets/5a4a1e9a-215a-4732-a8ce-66d28fb3de88)](https://youtu.be/GSvZh8ADVoU)
+
 ## Introduction
 
 `r/AmItheA*hole` (AITA) is a community where users seek judgment on whether their actions were the `A*hole` or not. Posts are classified as either negative (the `A*hole`) or positive (not the `A*hole`).
