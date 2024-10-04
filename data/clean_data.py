@@ -68,12 +68,14 @@ def main():
 
     # Merge datasets based on matching cleaned titles
     merged_data = pd.merge(parquet_data, aita_clean[['title', 'verdict']], left_on='submission_title', right_on='title', how='left')
+    print(merged_data)
 
     # Apply tallying function to each row in merged_data
     merged_data[['yta_count', 'nta_count']] = merged_data.apply(tally_comments, axis=1, result_type='expand')
 
     # Add the 'verdict' column based on the logic
     merged_data['verdict'] = merged_data.apply(assign_verdict, axis=1)
+    merged_data.drop(columns=['title'])
     merged_data.rename(columns={'submission_title': 'title', 'submission_text': 'body'}, inplace=True)
 
     # Drop unnecessary columns to get the final output
