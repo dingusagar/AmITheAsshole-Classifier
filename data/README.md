@@ -10,6 +10,7 @@ To get the datasets run the following from this directory (`cs7641-project/data`
 ```
 # change permissions and run
 chmod u+x pull_data.sh
+./pull_data.sh
 ```
 
 This will pull the data and create sym links in 'files' directory
