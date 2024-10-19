@@ -6,7 +6,11 @@
 
 ## Get the datasets
 
-To get the datasets run the following from this directory (`cs7641-project/data`):
+Download precleaned data from google docs![https://drive.google.com/file/d/1LOi7bO_kXSHoVvTfrknBgqA8wvShLcbI/view?usp=share_link](https://drive.google.com/file/d/1LOi7bO_kXSHoVvTfrknBgqA8wvShLcbI/view?usp=share_link)
+
+`OR`
+
+To get the dataset manually, run the following from this directory (`cs7641-project/data`):
 ```
 # change permissions and run
 chmod u+x pull_data.sh
