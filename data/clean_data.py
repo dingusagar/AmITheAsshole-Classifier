@@ -35,19 +35,25 @@ def tally_comments(row):
 # Function to assign a verdict based on the tally or known verdict
 def assign_verdict(row):
     if pd.notna(row['verdict']):  # Use the known verdict from aita_clean if available
-        if 'everyone sucks' in row['verdict'].lower():
-            return 'asshole'
-        elif 'no assholes here' in row['verdict'].lower():
-            return 'not the asshole'
-        return row['verdict'].lower()
+        verdict  = row['verdict'].lower()
+        if 'yta' in verdict or 'youre the asshole' in verdict or "you're the asshole" in verdict:
+            return 'yta'
+        elif 'nta' in verdict or 'not the asshole' in verdict or 'asshole' in verdict:
+            return 'nta'
+        elif 'everyone sucks' in verdict:
+            return 'yta'
+        elif 'no assholes here' in verdict:
+            return 'nta'
+        return 'unknown'
     else:
-        # Use the tally to determine the verdict
+         # Use the tally to determine the verdict
         if row['yta_count'] > row['nta_count']:
-            return 'asshole'
+            return 'yta'
         elif row['nta_count'] > row['yta_count']:
-            return 'not the asshole'
+            return 'nta'
         else:
             return 'unknown'  # In case of a tie or no mentions
+        
 
 def main():
     # Load the datasets
