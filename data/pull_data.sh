@@ -35,6 +35,16 @@ initialize_git_lfs() {
   fi
 }
 
+check_dvc() {
+  if command -v dvc > /dev/null; then
+    echo "dvc is already installed."
+    return 0
+  else
+    echo "dvc is not installed. Please install dvc to proceed: https://dvc.org/#get-started-dvc."
+    exit 1
+  fi
+}
+
 # check if git-lfs is installed
 if ! check_git_lfs; then
   # if not installed, check if we're on macOS and install git-lfs
@@ -42,6 +52,8 @@ if ! check_git_lfs; then
   # initialize git-lfs
   initialize_git_lfs
 fi
+
+check_dvc
 
 # proceed with cloning the repository and pulling the LFS data
 REPO_URL="https://huggingface.co/datasets/MattBoraske/Reddit-AITA-2018-to-2022"
@@ -96,10 +108,10 @@ for dvc_file in $DVC_FILES; do
   fi
 done
 
-# cull the dataset using dvc
+# pull the dataset using dvc
 dvc pull
 
-# cerify if the file was pulled successfully
+# verify if the file was pulled successfully
 if [ -f "aita_clean.csv" ]; then
   echo "aita_clean.csv pulled successfully!"
 else
