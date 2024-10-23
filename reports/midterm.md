@@ -40,7 +40,27 @@ We first apply clustering to see if it can capture any patterns. We apply K-mean
 
 #### Top2Vec
 
-TBD - Yuto's work
+Top2Vec is an unsupervised topic modeling algorithm that simultaneously learns topic embeddings and document embeddings directly from text data. Precisely, Top2Vec first used Doc2Vec to train the embedding. Then, based on the embedding, Top2Vec used UMAP (Uniform Manifold Approximation and Projection) algorithm to reduce diemntion. Finally, Top2Vec uses HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise) to find clusters. The hyperparameter of epsilon is provided by us for this final step.
+
+We ran Tp2Vec on title and body on our dataset, as well as two different value of epsilon (0.1 and 0.2). We found that the Top2Vec resulted in more meaningful clusters when trained on the body rather than the title. When trained on the title, it focused too much on common words such as should, could, very, etc. and was not able to cluster effectively. When trained on body, the resulting clusters were much easier to understand and represented clear concepts such as travel, workplace, family, etc.
+
+<table>
+  <tr>
+    <td><img src="../img/t2v-title-0.1-umap.png" alt="Image 1" width="300"/></td>
+    <td><img src="../img/t2v-title-0.2-umap.png" alt="Image 2" width="300"/></td>
+  </tr>
+  <tr>
+    <td><img src="../img/t2v-body-0.1-umap.png" alt="Image 3" width="300"/></td>
+    <td><img src="../img/t2v-body-0.2-umap.png" alt="Image 4" width="300"/></td>
+  </tr>
+</table>
+
+The Top2Vec model trained on body with epsilon=0.2 outputted the most meaningful clusters. Below is word clouds from some of the topics. As shown in the word cloud, each topic has a clear categori associated with them, such as finalcial problem, and romance.
+
+![topic0](../img/t2v-body-0.2-topic0.png)
+![topic1](../img/t2v-body-0.2-topic1.png)
+![topic2](../img/t2v-body-0.2-topic2.png)
+![topic3](../img/t2v-body-0.2-topic3.png)
 
 #### BERTopic
 
