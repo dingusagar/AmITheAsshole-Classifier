@@ -66,8 +66,12 @@ The Top2Vec model trained on body with epsilon=0.2 outputted the most meaningful
 ![topic3](../img/t2v-body-0.2-topic3.png)
 
 #### BERTopic
+![topics-gif-aita](https://github.com/user-attachments/assets/df1e01e3-5a84-439c-8360-05dcfd2f0005)
+BERTopic is a topic modeling technique that leverages transformer-based embeddings (like BERT) to create dense representations of documents and uses clustering techniques (such as HDBSCAN) to discover topics in textual data. It excels in generating dynamic, interpretable topics while handling complex, high-dimensional text data.
 
-TBD - Dingu's work
+We applied BERTTopic to our data, experimenting the topic modelling algo on reddit post titles, descriptions and title + descriptions. We used embedding model [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). The bertopic worked better when we gave only titles. Running on the entire dataset, we got around 900 meaningful topics. There were also noise topics like the first topic `wibta_if_my`. We plan to experiment with and without removing the outlier topics during our sueprvised learning stage of the project.  Interestingly giving the decriptions to the bertTopic made the topics less interesting since most of the topics were contaminated with stop words. 
+
+
 
 ### Supervised Learning
 
