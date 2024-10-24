@@ -79,25 +79,25 @@ Support Vector Classifier (SVC) is a powerful supervised learning algorithm used
 - **Feature extraction:** Text embeddings were used for clustering. These embeddings were obtained via scikit-learn's TfidfVectorizer function, with `max_features=50`.
 - **Training:** The model was trained on labeled data after text cleaning and vectorization. We used SMOTE to balance the dataset, and used a train-test split of 0.3. We also stratified on `verdict` to obtain a more even dataset.
 - **Results:**  
-  - Precision: 0.64 (Class 0), 0.62 (Class 1)  
-  - Recall: 0.58 (Class 0), 0.68 (Class 1)  
-  - F1-score: 0.61 (Class 0), 0.65 (Class 1)  
+  - Precision: 0.64 (NTA), 0.62 (YTA)  
+  - Recall: 0.58 (NTA), 0.68 (YTA)  
+  - F1-score: 0.61 (NTA), 0.65 (YTA)  
   - Accuracy: 63%
 
 Although the SVC performed well in terms of precision and recall, there was a slight imbalance in the recall values between the two classes. Further tuning of hyperparameters or class weights could improve the balance between predictions.
 
 ![Support Vector](../img/Support_Vector_Classifier_metrics.png)
 
-#### Logistic Regression**
+#### Logistic Regression
 
 Logistic Regression is a statistical method for binary classification that models the probability of a label based on input features. It assumes a linear relationship between the input variables and the log odds of the outcome. This simplicity makes it a strong baseline classifier.
 
 - **Feature extraction:** Text embeddings from the title and body were used for clustering. These embeddings were obtained via scikit-learn's TfidfVectorizer function, with `max_features=50`.
 - **Training:** The model was trained on labeled data after text cleaning and vectorization. We used SMOTE to balance the dataset, and used a train-test split of 0.3. We also stratified on `verdict` to obtain a more even dataset.
 - **Results:**  
-  - Precision: 0.63 (Class 0), 0.62 (Class 1)  
-  - Recall: 0.61 (Class 0), 0.65 (Class 1)  
-  - F1-score: 0.62 (Class 0), 0.64 (Class 1)  
+  - Precision: 0.63 (NTA), 0.62 (YTA)  
+  - Recall: 0.61 (NTA), 0.65 (YTA)  
+  - F1-score: 0.62 (NTA), 0.64 (YTA)  
   - Accuracy: 63%
 
 Logistic Regression demonstrated a balanced performance across precision and recall, making it a reliable model for this problem. However, the linearity assumption may limit its ability to capture complex relationships within the data.
@@ -111,9 +111,9 @@ K-Means is an unsupervised clustering algorithm that assigns each data point to 
 - **Feature extraction:** Text embeddings from the title and body were used for clustering. These embeddings were obtained via scikit-learn's TfidfVectorizer function, with `max_features=50`.
 - **Training:** We trained the K-Means algorithm with 2 clusters (matching the binary labels). We used SMOTE to balance our imbalanced dataset, and did a train-test split of 0.3. We stratified on the `verdict` to obtain more even train-test datasets.
 - **Results:**  
-  - Precision: 0.56 (Class 0), 0.55 (Class 1)  
-  - Recall: 0.52 (Class 0), 0.60 (Class 1)  
-  - F1-score: 0.54 (Class 0), 0.58 (Class 1)  
+  - Precision: 0.56 (NTA), 0.55 (YTA)  
+  - Recall: 0.52 (NTA), 0.60 (YTA)  
+  - F1-score: 0.54 (NTA), 0.58 (YTA)  
   - Accuracy: 56%
 
 ![Kmeans-Classifier](../img/KMeans_Classifier_metrics.png)
