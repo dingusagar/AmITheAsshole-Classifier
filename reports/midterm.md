@@ -74,6 +74,10 @@ K-Means is an unsupervised clustering algorithm that assigns each data point to 
 - **Feature extraction:** Text embeddings from the title and body were used for clustering. These embeddings were obtained via scikit-learn's TfidfVectorizer function, with `max_features=50`.
 - **Training:** We trained the K-Means algorithm with 2 clusters (matching the binary labels). We used SMOTE to balance our imbalanced dataset, and did a train-test split of 0.3. We stratified on the `verdict` to obtain more even train-test datasets.
 
+#### Pretrained Sentiment Model
+
+To establish a baseline on transformer models, we tried out a pretrained bert model [distilbert-base-uncased-finetuned-sst-2-english](https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english) on our dataset which was finetuned for sentiment analysis task. The assumption we made for this experiment is the positive sentiment texts should correspond with the `nta` label and the negative sentiment corresponds to the `yta` label. Refer to the results and discussion section more details. 
+
 ## Results and Discussion
 
 ### Visualization
@@ -165,6 +169,20 @@ Logistic Regression demonstrated a balanced performance across precision and rec
 - Accuracy: 56%
 
 ![Kmeans-Classifier](../img/KMeans_Classifier_metrics.png)
+
+#### Pretrained Sentiment Model
+Precision: 0.83 \
+Recall: 0.017 \
+F1 Score: 0.034
+
+![confusion_matrix_pretrained_sentiment](https://github.com/user-attachments/assets/81d6e594-f578-4365-8a8f-c540335ebf74)
+
+The precision, recall and F1 score corresponds to the positive sentiment label which corresponds to the `nta` label in our dataset. 
+We can see from the confusion matrix that most of the `nta` texts and the `yta` texts were labelled as negative sentiment. 
+Our assumption about the association of `yta` and `nta` labels with the sentiments of the texts does not seem to hold true. 
+
+This shows us that our problem is non trivial where we can use a sentiment model to solve it. And this justifies the need for finetuning the model on our dataset to predict `nta` or `yta` labels correctly. 
+
 
 ### Further Work
 
