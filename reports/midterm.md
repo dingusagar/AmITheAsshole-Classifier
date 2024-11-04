@@ -26,7 +26,7 @@ The text cleaning pipeline preprocesses the dataset by cleaning text, tallying c
 
 #### Word Embedding
 
-Word embedding is applied to the text as a preprocessing method to transform the dataset into a numerical representation, making it suitable for machine learning models. Top2Vec uses Doc2Vec and Word2Vec embeddings to group the documents into topics. For clustering and BERTopic, we use all-MiniLM-L6-v2, a sentence-transformers model that maps sentences and paragraphs to a 384-dimensional dense vector space. This encodes the text in a way that preserves semantic meaning. `TODO: add reasoning behind using Top2Vec and BERTopic`
+Word embedding is applied to the text as a preprocessing method to transform the dataset into a numerical representation, making it suitable for machine learning models. Top2Vec uses Doc2Vec and Word2Vec embeddings to group the documents into topics. For clustering and BERTopic, we use all-MiniLM-L6-v2, a sentence-transformers model that maps sentences and paragraphs to a 384-dimensional dense vector space. This encodes the text in a way that preserves semantic meaning.
 
 ### Unsupervised Learning
 
@@ -76,7 +76,7 @@ K-Means is an unsupervised clustering algorithm that assigns each data point to 
 
 #### Pretrained Sentiment Model
 
-To establish a baseline on transformer models, we tried out a pretrained bert model [distilbert-base-uncased-finetuned-sst-2-english](https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english) on our dataset which was finetuned for sentiment analysis task. The assumption we made for this experiment is the positive sentiment texts should correspond with the `nta` label and the negative sentiment corresponds to the `yta` label. Refer to the results and discussion section more details. 
+To establish a baseline on transformer models, we tried out a pretrained bert model [distilbert-base-uncased-finetuned-sst-2-english](https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english) on our dataset which was finetuned for sentiment analysis task. The assumption we made for this experiment is the positive sentiment texts should correspond with the `nta` label and the negative sentiment corresponds to the `yta` label. Refer to the results and discussion section more details.
 
 ## Results and Discussion
 
@@ -177,11 +177,11 @@ F1 Score: 0.034
 
 ![confusion_matrix_pretrained_sentiment](https://github.com/user-attachments/assets/81d6e594-f578-4365-8a8f-c540335ebf74)
 
-The precision, recall and F1 score corresponds to the positive sentiment label which corresponds to the `nta` label in our dataset. 
-We can see from the confusion matrix that most of the `nta` texts and the `yta` texts were labelled as negative sentiment. 
-Our assumption about the association of `yta` and `nta` labels with the sentiments of the texts does not seem to hold true. 
+The precision, recall and F1 score corresponds to the positive sentiment label which corresponds to the `nta` label in our dataset.
+We can see from the confusion matrix that most of the `nta` texts and the `yta` texts were labelled as negative sentiment.
+Our assumption about the association of `yta` and `nta` labels with the sentiments of the texts does not seem to hold true.
 
-This shows us that our problem is non trivial where we can use a sentiment model to solve it. And this justifies the need for finetuning the model on our dataset to predict `nta` or `yta` labels correctly. 
+This shows us that our problem is non trivial where we can use a sentiment model to solve it. And this justifies the need for finetuning the model on our dataset to predict `nta` or `yta` labels correctly.
 
 
 ### Further Work
