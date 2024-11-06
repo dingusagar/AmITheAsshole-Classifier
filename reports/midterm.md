@@ -1,7 +1,6 @@
 ### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm)
 
 # Midterm Report
-This is the midterm page. Include midterm-related content here.
 
 ## Introduction/Background
 
