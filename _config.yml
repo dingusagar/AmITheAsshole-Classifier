@@ -6,6 +6,7 @@
 #include:
 #  - proposal.md
 
+remote_theme: pages-themes/cayman@v0.2.0
 plugins:
   - jekyll-relative-links
   - jekyll-remote-theme
@@ -13,7 +14,6 @@ relative_links:
   enabled: true
   collections: true
 
-remote_theme: pages-themes/cayman@v0.2.0
 
 include:
   - index.md
