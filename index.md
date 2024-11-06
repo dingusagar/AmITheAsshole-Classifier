@@ -1,6 +1,8 @@
-<nav>
-  [Home](index.md) | [Proposal](proposal.md) | [Midterm](midterm.md)
-</nav>
+<p style="font-size: 1.5em; text-align: center;">
+  <a href="index.md">Home</a> |
+  <a href="proposal.md">Proposal</a> |
+  <a href="midterm.md">Midterm</a>
+</p>
 
 ## AITA Classifier
 
