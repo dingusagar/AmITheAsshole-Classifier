@@ -88,12 +88,12 @@ To establish a baseline on transformer models, we tried out a pretrained bert mo
 
 PCA and t-SNE on `title` embeddings both show two large clusters, but both do not have much information regarding the labels of interest.
 
-![3d-pca](img/3d-pca.png)
-![3d-title](img/3d-t-sne.png)
+![3d-pca](../img/3d-pca.png)
+![3d-title](../img/3d-t-sne.png)
 
 For `body` embeddings, the datapoints rather looked randomly scattered.
 
-![2d-body](img/2d-body.png)
+![2d-body](../img/2d-body.png)
 
 ### Clustering
 
@@ -101,13 +101,13 @@ Clustering the embedded dataset has shown poor results. This is mainly due to th
 
 The results of Gaussian mixture is visuallized as follows:
 
-![gmm-pca](img/gmm-pca.png)
-![gmm-pca](img/gmm-t-sne.png)
+![gmm-pca](../img/gmm-pca.png)
+![gmm-pca](../img/gmm-t-sne.png)
 
 Simple clustering did not provide much promising results, and even larger numbers of clusters failed to capture any local structure regarding `yta` or `nta` labels. The following is a chart showing the percentile of `yta` within a cluster, which all are similar to the global percentile (near to 30%)
 
-![yta-per-cluster-title](img/yta-per-cluster-title.png)
-![yta-per-cluster-body](img/yta-per-cluster-body.png)
+![yta-per-cluster-title](../img/yta-per-cluster-title.png)
+![yta-per-cluster-body](../img/yta-per-cluster-body.png)
 
 ### Topic Modeling
 
@@ -117,21 +117,21 @@ Top2Vec was applied on title and body on our dataset, as well as two different v
 
 <table>
   <tr>
-    <td><img src="img/t2v-title-0.1-umap.png" alt="Image 1" width="300"/></td>
-    <td><img src="img/t2v-title-0.2-umap.png" alt="Image 2" width="300"/></td>
+    <td><img src="../img/t2v-title-0.1-umap.png" alt="Image 1" width="300"/></td>
+    <td><img src="../img/t2v-title-0.2-umap.png" alt="Image 2" width="300"/></td>
   </tr>
   <tr>
-    <td><img src="img/t2v-body-0.1-umap.png" alt="Image 3" width="300"/></td>
-    <td><img src="img/t2v-body-0.2-umap.png" alt="Image 4" width="300"/></td>
+    <td><img src="../img/t2v-body-0.1-umap.png" alt="Image 3" width="300"/></td>
+    <td><img src="../img/t2v-body-0.2-umap.png" alt="Image 4" width="300"/></td>
   </tr>
 </table>
 
 The Top2Vec model trained on body with epsilon=0.2 outputted the most meaningful clusters. Below is word clouds from some of the topics. As shown in the word cloud, each topic has a clear categori associated with them, such as finalcial problem, and romance.
 
-![topic0](img/t2v-body-0.2-topic0.png)
-![topic1](img/t2v-body-0.2-topic1.png)
-![topic2](img/t2v-body-0.2-topic2.png)
-![topic3](img/t2v-body-0.2-topic3.png)
+![topic0](../img/t2v-body-0.2-topic0.png)
+![topic1](../img/t2v-body-0.2-topic1.png)
+![topic2](../img/t2v-body-0.2-topic2.png)
+![topic3](../img/t2v-body-0.2-topic3.png)
 
 For BERTopic, we experimented the topic modelling algo on reddit post titles, descriptions and title + descriptions. We used embedding model [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). The bertopic worked better when we gave only titles. Running on the entire dataset, we got around 900 meaningful topics. There were also noise topics like the first topic `wibta_if_my`. We plan to experiment with and without removing the outlier topics during our sueprvised learning stage of the project.  Interestingly giving the decriptions to the BERTopic made the topics less interesting since most of the topics were contaminated with stop words.
 
@@ -148,7 +148,7 @@ For BERTopic, we experimented the topic modelling algo on reddit post titles, de
 
 Although the SVC performed well in terms of precision and recall, there was a slight imbalance in the recall values between the two classes. Further tuning of hyperparameters or class weights could improve the balance between predictions.
 
-![Support Vector](img/Support_Vector_Classifier_metrics.png)
+![Support Vector](../img/Support_Vector_Classifier_metrics.png)
 
 #### Logistic regression
 
@@ -161,7 +161,7 @@ Although the SVC performed well in terms of precision and recall, there was a sl
 
 Logistic Regression demonstrated a balanced performance across precision and recall, making it a reliable model for this problem. However, the linearity assumption may limit its ability to capture complex relationships within the data.
 
-![Logistic Regression](img/Logistic_Regression_metrics.png)
+![Logistic Regression](../img/Logistic_Regression_metrics.png)
 
 #### K-means classifier
 
@@ -172,7 +172,7 @@ Logistic Regression demonstrated a balanced performance across precision and rec
 - F1-score: 0.54 (`nta`), 0.58 (`yta`)
 - Accuracy: 56%
 
-![Kmeans-Classifier](img/KMeans_Classifier_metrics.png)
+![Kmeans-Classifier](../img/KMeans_Classifier_metrics.png)
 
 #### Pretrained Sentiment Model
 Precision: 0.83 \
