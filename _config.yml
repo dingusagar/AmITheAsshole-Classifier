@@ -1,0 +1,10 @@
+#plugins:
+#  - jekyll-relative-links
+#relative_links:
+#  enabled: true
+#  collections: true
+#include:
+#  - Proposal.md
+
+theme: jekyll-theme-cayman  # Optional: Use a theme or specify layout as shown
+markdown: kramdown           # Jekyll's default markdown processor
