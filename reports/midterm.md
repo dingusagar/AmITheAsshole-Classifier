@@ -1,4 +1,15 @@
-# CS7641 Project Midterm Report - AITA Classifier
+---
+layout: default
+title: "Page 2"
+---
+
+# Page 2
+This is Page 2. Here is some content.
+
+- [Home](reports/index.md)
+- [Page 1](reports/Proposal.md)
+
+[//]: # (# CS7641 Project Midterm Report - AITA Classifier)
 
 ## Introduction/Background
 

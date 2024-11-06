@@ -1,4 +1,19 @@
-# CS7641 Project Proposal - AITA Classifier
+---
+layout: default
+title: "Page 1"
+---
+
+# Page 1
+This is Page 1. Here is some content.
+
+- [Home](reports/index.md)
+- [Page 2](reports/midterm.md)
+
+[//]: # (# CS7641 Project Midterm Report - AITA Classifier)
+
+
+
+[//]: # (# CS7641 Project Proposal - AITA Classifier)
 
 [![Proposal Video](https://drive.usercontent.google.com/download?id=1jTouGDHJU9t7MMBemySy7bIuhR6zQfb_&export=view&authuser=0)](https://youtu.be/GSvZh8ADVoU)
 
