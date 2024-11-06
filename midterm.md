@@ -1,7 +1,3 @@
----
-layout: default
-title: "Midterm"
----
 
 <nav>
   [Home](index.md) | [Proposal](proposal.md) | [Midterm](midterm.md)
