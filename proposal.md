@@ -1,6 +1,5 @@
-<nav>
-  [Home](index.md) | [Proposal](proposal.md) | [Midterm](midterm.md)
-</nav>
+### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/midterm)
+
 
 # Proposal
 
