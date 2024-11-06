@@ -13,6 +13,6 @@ relative_links:
   collections: true
 
 include:
-  - reports/index.md
+  - index.md
   - reports/proposal.md
   - reports/midterm.md
