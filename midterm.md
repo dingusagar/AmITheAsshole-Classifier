@@ -1,15 +1,14 @@
 ---
 layout: default
-title: "Page 2"
+title: "Midterm"
 ---
 
-# Page 2
-This is Page 2. Here is some content.
+<nav>
+  [Home](index.md) | [Proposal](proposal.md) | [Midterm](midterm.md)
+</nav>
 
-- [Home](reports/index.md)
-- [Page 1](reports/Proposal.md)
-
-[//]: # (# CS7641 Project Midterm Report - AITA Classifier)
+# Midterm
+This is the midterm page. Include midterm-related content here.
 
 ## Introduction/Background
 
