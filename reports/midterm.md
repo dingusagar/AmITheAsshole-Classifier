@@ -178,8 +178,7 @@ Logistic Regression demonstrated a balanced performance across precision and rec
 Precision: 0.83 \
 Recall: 0.017 \
 F1 Score: 0.034
-
-![confusion_matrix_pretrained_sentiment](https://github.com/user-attachments/assets/81d6e594-f578-4365-8a8f-c540335ebf74)
+![confusion_matrix_pretrained_sentiment](../img/confusion_matrix_pretrained_sentiment.png)
 
 The precision, recall and F1 score corresponds to the positive sentiment label which corresponds to the `nta` label in our dataset.
 We can see from the confusion matrix that most of the `nta` texts and the `yta` texts were labelled as negative sentiment.
