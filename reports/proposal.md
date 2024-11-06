@@ -1,5 +1,4 @@
-### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/midterm)
-
+### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm)
 
 # Proposal
 
