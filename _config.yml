@@ -4,7 +4,14 @@
 #  enabled: true
 #  collections: true
 #include:
-#  - Proposal.md
+#  - proposal.md
 
-theme: jekyll-theme-cayman  # Optional: Use a theme or specify layout as shown
-markdown: kramdown           # Jekyll's default markdown processor
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - index.md
+  - proposal.md
+  - midterm.md
