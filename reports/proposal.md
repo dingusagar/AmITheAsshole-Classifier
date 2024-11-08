@@ -1,4 +1,7 @@
-# CS7641 Project Proposal - AITA Classifier
+### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm)
+
+
+# Proposal
 
 [![Proposal Video](https://drive.usercontent.google.com/download?id=1jTouGDHJU9t7MMBemySy7bIuhR6zQfb_&export=view&authuser=0)](https://youtu.be/GSvZh8ADVoU)
 
