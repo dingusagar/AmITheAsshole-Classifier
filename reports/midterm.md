@@ -17,7 +17,7 @@ This report explains the usage of data preprocessing and unsupervised learning f
 
 ## Methods
 
-This section includes various ML methods we used for our project.
+This section includes various ML methods we used for our project and the motivations for using them.
 
 ### Preprocessing
 
@@ -39,7 +39,9 @@ Principal component analysis (PCA) is a dimensionality reduction technique that 
 
 #### K-means and Gaussian Mixture
 
-We first apply clustering to see if it can capture any patterns. We apply K-means clustering and Gaussian mixture models to evaluate performance; however, due to the complexity of the problem space, these methods do not provide much usefulness, even at a local level. While they successfully capture the clusters visible in the dimensionally reduced representation, the distribution of labels remains random. A simple demonstration is that when applying clustering for a larger K (in this case, 10), each cluster has a similar label ratio to the global distribution, showing no local optima. The poor performance of clustering will be further discussed in the remainder of this report.
+K-Means clustering was used as an exploratory tool to detect potential natural groupings in the data without label supervision. Namely, it was applied to the goal of identifying inherent patterns in the AITA posts that could reveal how the language used in different posts aligns with the `yta` or `nta` labels. The Gaussian mixture models were chosen for their ability to model data distributions more flexibly than K-Means by assuming that data points were generated from a mixture of several Gaussian distributions. This approach offers an advantage for detecting soft clusters, where each post could belong to multiple clusters with varying probabilities. This probabilistic nature allows for a better understanding of ambiguous cases in AITA posts, where the classification of `yta` or `nta` might not be straightforward.
+
+Due to the complexity of the problem space, these methods do not provide much usefulness, even at a local level. While they successfully capture the clusters visible in the dimensionally reduced representation, the distribution of labels remains random. A simple demonstration is that when applying clustering for a larger K (in this case, 10), each cluster has a similar label ratio to the global distribution, showing no local optima. The poor performance of clustering will be further discussed in the remainder of this report.
 
 The results from K-Means show that clustering alone was not sufficient for accurate classification. The clusters were spread similarly to the global label distribution, indicating that unsupervised learning methods may struggle to capture the subtleties of this problem without additional supervision.
 
@@ -47,10 +49,12 @@ The results from K-Means show that clustering alone was not sufficient for accur
 
 Top2Vec is an unsupervised topic modeling algorithm that simultaneously learns topic embeddings and document embeddings directly from text data. Precisely, Top2Vec first used Doc2Vec to train the embedding. Then, based on the embedding, Top2Vec used UMAP (Uniform Manifold Approximation and Projection) algorithm to reduce diemntion. Finally, Top2Vec uses HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise) to find clusters. The hyperparameter of epsilon is provided by us for this final step.
 
+Top2Vec was chosen for this project due to its capability of discovering topics within a dataset while simultaneously embedding documents and topics into a shared vector space. This unsupervised method is particularly beneficial for exploring latent structures in textual data, which aligns well with the goal of understanding the thematic content of AITA posts.
+
 #### BERTopic
 
 ![topics-gif-aita](https://github.com/user-attachments/assets/df1e01e3-5a84-439c-8360-05dcfd2f0005)
-BERTopic is a topic modeling technique that leverages transformer-based embeddings (like BERT) to create dense representations of documents and uses clustering techniques (such as HDBSCAN) to discover topics in textual data. It excels in generating dynamic, interpretable topics while handling complex, high-dimensional text data.
+BERTopic is a topic modeling technique that leverages transformer-based embeddings (like BERT) to create dense representations of documents and uses clustering techniques (such as HDBSCAN) to discover topics in textual data. It excels in generating dynamic, interpretable topics while handling complex, high-dimensional text data. With respect to the AITA dataset, there was a need to understand more nuanced relationships between words and the context surrounding it. The questions and corresponding descriptions posted on the r/AITA subreddit are often heavily laden with context and colloquial language differences. Using a model like BERTopic helped ensure that the semantic meaning was reasonably captured.
 
 ### Supervised Learning
 
@@ -58,12 +62,14 @@ BERTopic is a topic modeling technique that leverages transformer-based embeddin
 
 We used **TF-IDF Vectorizer** from `sklearn` to convert the text data into numerical features. TF-IDF (Term Frequency-Inverse Document Frequency) assigns weights to words based on their importance in a document relative to the entire dataset. This method captures the relevance of each word, helping the models learn meaningful patterns.
 
-Support Vector Classifier (SVC) is a powerful supervised learning algorithm used for binary and multi-class classification tasks. SVC works by finding a hyperplane that best separates data points of different classes in a high-dimensional space. For our AITA dataset, we used a linear kernel to train the SVC, given the binary nature of the labels (`yta` vs. `nta`).
+The Support Vector Classifier was chosen for its robustness in binary & multi-class classification tasks, and its effectiveness in handling high-dimensional feature spaces. SVC works by finding a hyperplane that best separates data points of different classes in a high-dimensional space. For this project, the binary nature of the AITA labels (`yta` vs. `nta`) makes SVC a fitting choice, as it can define clear decision boundaries between the two classes. The use of a linear kernel is particularly suitable given the straightforward relationship we aim to capture between input features and labels. The model's ability to maximize the margin between classes helps mitigate the potential impact of noisy data and imbalances.
 
 - **Feature extraction:** Text embeddings were used for clustering. These embeddings were obtained via scikit-learn's TfidfVectorizer function, with `max_features=50`.
 - **Training:** The model was trained on labeled data after text cleaning and vectorization. We used SMOTE to balance the dataset, and used a train-test split of 0.3. We also stratified on `verdict` to obtain a more even dataset.
 
 #### Logistic Regression
+
+Logistic Regression serves as a baseline for this project due to its simplicity and interpretability. Its use is grounded in the need for a straightforward, transparent model to establish initial performance metrics and provide insight into the linear relationships between input features and the AITA verdicts.
 
 Logistic Regression is a statistical method for binary classification that models the probability of a label based on input features. It assumes a linear relationship between the input variables and the log odds of the outcome. This simplicity makes it a strong baseline classifier.
 
@@ -77,9 +83,11 @@ K-Means is an unsupervised clustering algorithm that assigns each data point to 
 - **Feature extraction:** Text embeddings from the title and body were used for clustering. These embeddings were obtained via scikit-learn's TfidfVectorizer function, with `max_features=50`.
 - **Training:** We trained the K-Means algorithm with 2 clusters (matching the binary labels). We used SMOTE to balance our imbalanced dataset, and did a train-test split of 0.3. We stratified on the `verdict` to obtain more even train-test datasets.
 
+The K-Means classifier was explored as a creative approach to leverage unsupervised clustering for classification. While this approach is not commonly used for supervised learning, it provides a way to assess the natural separation between posts and test the feasibility of clustering-based predictions.
+
 #### Pretrained Sentiment Model
 
-To establish a baseline on transformer models, we tried out a pretrained bert model [distilbert-base-uncased-finetuned-sst-2-english](https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english) on our dataset which was finetuned for sentiment analysis task. The assumption we made for this experiment is the positive sentiment texts should correspond with the `nta` label and the negative sentiment corresponds to the `yta` label. Refer to the results and discussion section more details.
+To establish a baseline on transformer models, we tried out a pretrained bert model [distilbert-base-uncased-finetuned-sst-2-english](https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english) on our dataset which was finetuned for sentiment analysis task. The assumption we made for this experiment is the positive sentiment texts should correspond with the `nta` label and the negative sentiment corresponds to the `yta` label. This experiment aimed to determine whether a general-purpose sentiment analysis model could be repurposed to identify the polarity of user-submitted posts as a proxy for their overall judgment. Refer to the results and discussion section more details.
 
 ## Results and Discussion
 
@@ -174,6 +182,7 @@ Logistic Regression demonstrated a balanced performance across precision and rec
 ![Kmeans-Classifier](../img/KMeans_Classifier_metrics.png)
 
 #### Pretrained Sentiment Model
+
 Precision: 0.83 \
 Recall: 0.017 \
 F1 Score: 0.034
@@ -185,8 +194,7 @@ Our assumption about the association of `yta` and `nta` labels with the sentimen
 
 This shows us that our problem is non trivial where we can use a sentiment model to solve it. And this justifies the need for finetuning the model on our dataset to predict `nta` or `yta` labels correctly.
 
-
-### Further Work
+### Next steps
 
 #### Revisit Data Cleaning
 
