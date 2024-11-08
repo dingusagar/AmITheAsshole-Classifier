@@ -132,7 +132,7 @@ The Top2Vec model trained on body with epsilon=0.2 outputted the most meaningful
 
 ####  3.2.4. <a name='BERTopic'></a>BERTopic
 
-![topics-gif-aita](https://github.com/user-attachments/assets/df1e01e3-5a84-439c-8360-05dcfd2f0005)
+![topics-gif-aita](../img/bertopic.png)
 BERTopic is a topic modeling technique that leverages transformer-based embeddings (like BERT) to create dense representations of documents and uses clustering techniques (such as HDBSCAN) to discover topics in textual data. It excels in generating dynamic, interpretable topics while handling complex, high-dimensional text data. With respect to the AITA dataset, there was a need to understand more nuanced relationships between words and the context surrounding it. The questions and corresponding descriptions posted on the r/AITA subreddit are often heavily laden with context and colloquial language differences. Using a model like BERTopic helped ensure that the semantic meaning was reasonably captured.
 
 We experimented the topic modelling algo on reddit post titles, descriptions and title + descriptions. We used embedding model [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). The bertopic worked better when we gave only titles. Running on the entire dataset, we got around 900 meaningful topics. There were also noise topics like the first topic `wibta_if_my`. We plan to experiment with and without removing the outlier topics during our sueprvised learning stage of the project.  Interestingly giving the decriptions to the BERTopic made the topics less interesting since most of the topics were contaminated with stop words.
