@@ -245,7 +245,7 @@ Since the pretrained sentiment models did not work well for our task, we will in
 |---|---|
 | All | Writeup and discussion |
 | All | References |
-| Dingu | BERTopic |
+| Dingu | BERTopic, distilBERT sentiment model  |
 | Ethan | Data organization and cleaning, K-means clustering |
 | Kyu Yeon | Clustering, Gaussian Mixture |
 | Lex | Supervised methods (SVC, logistic, k-means classifier)  |
