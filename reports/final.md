@@ -1,4 +1,4 @@
-###  1. <a name='Homehttps:dingusagar.github.iocs7641-projectProposalhttps:dingusagar.github.iocs7641-projectreportsproposalMidtermReporthttps:dingusagar.github.iocs7641-projectreportsmidtermMidtermReporthttps:dingusagar.github.iocs7641-projectreportsfinal'></a>[Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/final)
+### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Final Report](https://dingusagar.github.io/cs7641-project/reports/final)
 
 # Final Report
 
