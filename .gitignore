@@ -165,4 +165,8 @@ cython_debug/
 *.npy
 *.csv
 
+*.safetensorswebsite/model/fine_tuned_aita_classifier/model.safetensors
+
 *.safetensors
+
+website/model/*
