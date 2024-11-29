@@ -281,7 +281,7 @@ This shows us that our problem is non trivial where we can use a sentiment model
 |---|---|
 | All | Writeup and discussion |
 | All | References |
-| Dingu | BERTopic, distilBERT sentiment model  |
+| Dingu | BERTopic, distilBERT sentiment model, explanation generation with Llama, live deployement |
 | Ethan | Data organization and cleaning, K-means clustering |
 | Kyu Yeon | Clustering, Gaussian Mixture |
 | Lex | Supervised methods (SVC, logistic, k-means classifier)  |
