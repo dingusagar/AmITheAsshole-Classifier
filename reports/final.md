@@ -236,13 +236,11 @@ Given the complex relation of the data and labels, we decided to leverage the ca
 
 We had multiple considerations about fine tuning, which includes the following:
 
-* Used relatively high weight_decay because I didn't want the model to lose too much of the pre-trained weights
-* batch size of 32 worked better than 64
-* learning_rate is also relatively low, model couldn't learn by using higher values like 1e-2
-* validation error is got higher relatively fast, where we had to apply early stopping for the best performing model.
-* precision didn't change much during the training, increase of F1 score mostly comes from accuracy and recall - model is getting better on identifying more true positives and false negatives.
-* Tried to address the "dip" that shows in the early stages of training by decreasing learning rate, was able to alleviate it by tuning learning rate, but always happened.
-* oversampling works better than undersampling
+We wanted to avoid catastrophic forgetting, a phenomonon which the model loses previously acquired information by training from new data. Higher `weight_decay` and relatively lower `learning_rate` was used heavily penalize drastic changes of weights.
+
+Validation error is got higher relatively fast, where we had to apply early stopping for the best performing model. Precision didn't change much during the training, increase of F1 score mostly comes from accuracy and recall - model is getting better on identifying more true positives and false negatives. We also tried to address the "dip" that shows in the early stages of training by decreasing learning rate, was able to alleviate it by tuning learning rate, but always happened.
+
+Initial data had imbalance in classes, where `nta` had 3 times more occurences than `yta`. We tried both undersampling and oversampling to match the classes, which oversampling performed better. This would indicate despite the duplicate data in `yta`, a diversity of data even for a single class is more relevant. Advanced methods such as SMOTE was also in consideration, but such artificially generated data may not be relevant given the nature of the dataset, heavily dependent to natural language and its semantics. Additionally, batch size of 32 worked better than 64.
 
 Training 3 epochs took ~ 14 minutes on H100 and ~ 32 minutes on L40S. The final results are plotted below:
 
