@@ -240,6 +240,9 @@ For the pretrained sentiment model, the precision, recall and F1 score correspon
 
 This shows us that our problem is non trivial where we can use a sentiment model to solve it. Therefore, this justifies the need for fine-tuning the model on our dataset to predict `nta` or `yta` labels correctly.
 
+####  4.3.6. <a name='NextSteps'></a>Next Steps
+Our best model combination is using finetuned BERT for classification along with `llama3.2 3B` for explanation generation for the class label. The `llama3.2 3B` model is still big to be hosted on a cpu server. Also the the llama model sometimes reponds with "I won't be able to help with that" kind of responses. 
+A future direction could be instruction finetuning the smallest variant of llama model with 1B parameters. We could also look at combining the finetuning of BERT with the llama with a single loss function. Our initial idea of adapting the project to an automatic tone checker for writing is not explored in depth, so that's something we could explore further which can add a lot of value. 
 
 ##  5. <a name='GanttChart'></a>Gantt Chart
 
