@@ -45,18 +45,19 @@ This project aligns with [stance detection](https://doi.org/10.1145/3369026), wh
 
 Our project falls in a similar category, which aims to build a morality classifier and generate explanations for why a post was classified as "the `A*hole`" or not.
 
+Checkout our webapp which is live [here](https://huggingface.co/spaces/dingusagar/aita-classifier).
+
 ##  2. <a name='ProblemDefinition'></a>Problem Definition
 
-Develop ML model to classify posts from the AITA subreddit, determining whether the author is considered "the `A*hole`" or "Not the `A*hole`" based on the post content. Generate text explaining the classification.
+The main focus of our project : 
+1. Develop ML model to process user submitted life situations similar to the posts from the AITA subreddit, and classify as `YTA (You are the A*hole)` or `(NTA) Not the A*hole` based on the situation described by the user. 
+2. Generate an constructive explanation for why the user was classified as `YTA` or `NTA` based on the described situation. 
 
-This project aims to:
-
+If successful, we think this project can be adapted to a version of “Grammarly” but for writing tone which has the following features : 
 1. Act as an automated tone checker for writing
 2. Explain why and how to adjust your writing to meet a tone
 
-We are essentially making a “Grammarly” but for writing tone.
-
-This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling.
+This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling. The we discuss our training efforts on unsupervised methods and finally on how we integrated an open sourced LLM for generating the explanations. 
 
 ##  3. <a name='Dataset'></a>Dataset
 
