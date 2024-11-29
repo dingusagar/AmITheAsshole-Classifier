@@ -5,7 +5,7 @@ from ollama import chat
 from ollama import ChatResponse
 
 # Default model
-OLLAMA_MODEL = "llama3.2:3b-instruct-q3_K_M"
+OLLAMA_MODEL = "llama3.2:3b"
 # OLLAMA_MODEL = "llama3.2:1b"
 
 # Load BERT MODEL
