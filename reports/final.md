@@ -25,7 +25,8 @@
 		* 4.3.2. [Logistic Regression](#LogisticRegression)
 		* 4.3.3. [K-Means Classifier](#K-MeansClassifier)
 		* 4.3.4. [Pretrained Sentiment Model](#PretrainedSentimentModel)
-		* 4.3.5. [Discussion for Supervised](#DiscussionforSupervised)
+		* 4.3.5. [Fine-Tuned BERT](#FineTunedBERT)
+		* 4.3.6. [Discussion for Supervised](#DiscussionforSupervised)
 * 5. [Gantt Chart](#GanttChart)
 * 6. [Contribution Table](#ContributionTable)
 * 7. [References](#References)
@@ -65,11 +66,11 @@ We have two datasets based on scraped contents of Reddit
 
 1. [Reddit-AITA-2018-to-2022](https://huggingface.co/datasets/MattBoraske/Reddit-AITA-2018-to-2022/viewer/default/train?sort%5Bcolumn%5D=toxicity_label&sort%5Bdirection%5D=desc&p=2&row=9369)
 2. [AITA-2018-2019](https://github.com/iterative/aita_dataset)
- 
-###  3.2. <a name='Datasetoverview'></a>Dataset overview
-Our dataset contain `Title` , `Body`, `Comments`. Since `Comments` are lengthy text data, we convert it to a 2 value categorical feature called `Verdict` by taking majority counts of keywords `nta` or `yta` found in comments. After this process of converting `Comments` to `Verdict`, we use `Title` and `Body`as our features, and `Verdict` as our label. 
 
-Our dataset have a total of 123,954 records of reddit posts in AITA subreddits. The dataset has a skewed distribution in the `Verdict` feature, where only 30,048 records (24.2% of total) have a verdict of `yta` and 93,906 records (75.7% of total) have a verdict of `nta`. 
+###  3.2. <a name='Datasetoverview'></a>Dataset overview
+Our dataset contain `Title` , `Body`, `Comments`. Since `Comments` are lengthy text data, we convert it to a 2 value categorical feature called `Verdict` by taking majority counts of keywords `nta` or `yta` found in comments. After this process of converting `Comments` to `Verdict`, we use `Title` and `Body`as our features, and `Verdict` as our label.
+
+Our dataset have a total of 123,954 records of reddit posts in AITA subreddits. The dataset has a skewed distribution in the `Verdict` feature, where only 30,048 records (24.2% of total) have a verdict of `yta` and 93,906 records (75.7% of total) have a verdict of `nta`.
 
 ###  3.3. <a name='DataPreprocessing'></a>Data Preprocessing
 In order to combine the two raw dataset and create a single dataset for our use case, we took the following approach including text cleaning, data labelling, and data splitting.
@@ -229,7 +230,36 @@ To establish a baseline on transformer models, we tried out a pretrained bert mo
 
 ![confusion_matrix_pretrained_sentiment](../img/confusion_matrix_pretrained_sentiment.png)
 
-####  4.3.5. <a name='DiscussionforSupervised'></a>Discussion for Supervised
+####  4.3.5 <a name='FineTunedBERT'></a> Fine-tuned BERT
+
+Given the complex relation of the data and labels, we decided to leverage the capabilities of pretrained models, specifically BERT for sentiment analysis.
+
+We had multiple considerations about fine tuning, which includes the following:
+
+We wanted to avoid catastrophic forgetting, a phenomonon which the model loses previously acquired information by training from new data. Higher `weight_decay` and relatively lower `learning_rate` was used heavily penalize drastic changes of weights.
+
+Validation error is got higher relatively fast, where we had to apply early stopping for the best performing model. Precision didn't change much during the training, increase of F1 score mostly comes from accuracy and recall - model is getting better on identifying more true positives and false negatives. We also tried to address the "dip" that shows in the early stages of training by decreasing learning rate, was able to alleviate it by tuning learning rate, but always happened.
+
+Initial data had imbalance in classes, where `nta` had 3 times more occurences than `yta`. We tried both undersampling and oversampling to match the classes, which oversampling performed better. This would indicate despite the duplicate data in `yta`, a diversity of data even for a single class is more relevant. Advanced methods such as SMOTE was also in consideration, but such artificially generated data may not be relevant given the nature of the dataset, heavily dependent to natural language and its semantics. Additionally, batch size of 32 worked better than 64.
+
+Training 3 epochs took ~ 14 minutes on H100 and ~ 32 minutes on L40S. The final results are plotted below:
+
+**Training metrics**
+
+Note that our model used the early stopped model near the 10th iteration.
+
+![alt text](../img/training-metrics.png)
+
+**Training Results**
+
+* Accuracy: 0.68
+* Precision: 0.82
+* Recall: 0.73
+* F1: 0.77
+
+![alt text](../img/bert-confusion.png)
+
+####  4.3.6. <a name='DiscussionforSupervised'></a>Discussion for Supervised
 
 Although the SVC performed well in terms of precision and recall, there was a slight imbalance in the recall values between the two classes. Further tuning of hyperparameters or class weights could improve the balance between predictions.
 
@@ -239,6 +269,7 @@ For the pretrained sentiment model, the precision, recall and F1 score correspon
 
 This shows us that our problem is non trivial where we can use a sentiment model to solve it. Therefore, this justifies the need for fine-tuning the model on our dataset to predict `nta` or `yta` labels correctly.
 
+Fine-tuning BERT shows a much reasonable F1 score of 0.77, where the original model is a binary classifier where it predicits sentiment as labels `1` for `positive` and `0` for `negative`. Given that the `negative` label can be mapped into our dataset's `yta` label, it performed reasonably well on random examples from Reddit. For example, our classifier model predicted [this post](https://www.reddit.com/r/AmItheAsshole/comments/1gw9o5g/aita_for_defending_my_daughters_comments_towards/) as `yta` with `0.81` confidence and [this post](https://www.reddit.com/r/AmItheAsshole/comments/1gwl76e/aitah_for_refusing_to_let_my_moms_boyfriend_walk/) as `nta` with `0.98` confidence. The complexity of the given task having long paragraphs of input text required a much advanced model to capture the sentiment.
 
 ##  5. <a name='GanttChart'></a>Gantt Chart
 
@@ -252,7 +283,7 @@ This shows us that our problem is non trivial where we can use a sentiment model
 | All | References |
 | Dingu | BERTopic, distilBERT sentiment model  |
 | Ethan | Data organization and cleaning, K-means clustering |
-| Kyu Yeon | Clustering, Gaussian Mixture |
+| Kyu Yeon | Clustering, Gaussian Mixture, BERT fine-tuning |
 | Lex | Supervised methods (SVC, logistic, k-means classifier)  |
 | Yuto | Top2Vec |
 
