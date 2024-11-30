@@ -231,7 +231,7 @@ To establish a baseline on transformer models, we tried out a pretrained bert mo
 
 ![confusion_matrix_pretrained_sentiment](../img/confusion_matrix_pretrained_sentiment.png)
 
-####  4.3.5 <a name='FineTunedBERT'></a> Fine-tuned BERT
+####  4.3.5 <a name='FineTunedBERT'></a>Fine-tuned BERT
 
 Given the complex relation of the data and labels, we decided to leverage the capabilities of pretrained models, specifically BERT for sentiment analysis.
 
