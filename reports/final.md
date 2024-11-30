@@ -26,11 +26,12 @@
 		* 4.3.3. [K-Means Classifier](#K-MeansClassifier)
 		* 4.3.4. [Pretrained Sentiment Model](#PretrainedSentimentModel)
 		* 4.3.5. [Fine-Tuned BERT](#FineTunedBERT)
-    		* 4.3.6. [LLM for Explanation Generation](#ExplanationGeneration)	
+    * 4.3.6. [LLM for Explanation Generation](#ExplanationGeneration)	
 		* 4.3.7. [Discussion for Supervised](#DiscussionforSupervised)
-* 5. [Gantt Chart](#GanttChart)
-* 6. [Contribution Table](#ContributionTable)
-* 7. [References](#References)
+* 5. [Next Steps](#GanttChart)
+* 6. [Gantt Chart](#GanttChart)
+* 7. [Contribution Table](#ContributionTable)
+* 8. [References](#References)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -47,18 +48,19 @@ This project aligns with [stance detection](https://doi.org/10.1145/3369026), wh
 
 Our project falls in a similar category, which aims to build a morality classifier and generate explanations for why a post was classified as "the `A*hole`" or not.
 
+Checkout our webapp which is live [here](https://huggingface.co/spaces/dingusagar/aita-classifier).
+
 ##  2. <a name='ProblemDefinition'></a>Problem Definition
 
-Develop ML model to classify posts from the AITA subreddit, determining whether the author is considered "the `A*hole`" or "Not the `A*hole`" based on the post content. Generate text explaining the classification.
+The main focus of our project : 
+1. Develop ML model to process user submitted life situations similar to the posts from the AITA subreddit, and classify as `YTA (You are the A*hole)` or `(NTA) Not the A*hole` based on the situation described by the user. 
+2. Generate an constructive explanation for why the user was classified as `YTA` or `NTA` based on the described situation. 
 
-This project aims to:
-
+If successful, we think this project can be adapted to a version of “Grammarly” but for writing tone which has the following features : 
 1. Act as an automated tone checker for writing
 2. Explain why and how to adjust your writing to meet a tone
 
-We are essentially making a “Grammarly” but for writing tone.
-
-This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling.
+This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling. Then we discuss our training efforts on unsupervised methods and finally on how we integrated an open sourced LLM for generating the explanations. 
 
 ##  3. <a name='Dataset'></a>Dataset
 
@@ -299,14 +301,17 @@ Logistic Regression demonstrated a balanced performance across precision and rec
 For the pretrained sentiment model, the precision, recall and F1 score corresponds to the positive sentiment label which corresponds to the `nta` label in our dataset. We can see from the confusion matrix that most of the `nta` texts and the `yta` texts were labelled as negative sentiment. Our assumption about the association of `yta` and `nta` labels with the sentiments of the texts does not seem to hold true.
 
 This shows us that our problem is non trivial where we can use a sentiment model to solve it. Therefore, this justifies the need for fine-tuning the model on our dataset to predict `nta` or `yta` labels correctly.
-
 Fine-tuning BERT shows a much reasonable F1 score of 0.77, where the original model is a binary classifier where it predicits sentiment as labels `1` for `positive` and `0` for `negative`. Given that the `negative` label can be mapped into our dataset's `yta` label, it performed reasonably well on random examples from Reddit. For example, our classifier model predicted [this post](https://www.reddit.com/r/AmItheAsshole/comments/1gw9o5g/aita_for_defending_my_daughters_comments_towards/) as `yta` with `0.81` confidence and [this post](https://www.reddit.com/r/AmItheAsshole/comments/1gwl76e/aitah_for_refusing_to_let_my_moms_boyfriend_walk/) as `nta` with `0.98` confidence. The complexity of the given task having long paragraphs of input text required a much advanced model to capture the sentiment.
 
-##  5. <a name='GanttChart'></a>Gantt Chart
+##  5. <a name='NextSteps'></a>Next Steps
+Our best model combination is using finetuned BERT for classification along with `llama3.2 3B` for explanation generation for the class label. The `llama3.2 3B` model is still big to be hosted on a cpu server. Also the the llama model sometimes reponds with "I won't be able to help with that" kind of responses. 
+A future direction could be instruction finetuning the smallest variant of llama model with 1B parameters. We could also look at combining the finetuning of BERT with the llama with a single loss function. Our initial idea of adapting the project to an automatic tone checker for writing is not explored in depth, so that's something we could explore further which can add a lot of value. We could also look at semi-supervised training approaches by combining the results of topic modelling and clustering with the finetuning of BERT and LLMs. These are some of the potential future directions which are interesting to explore. 
+
+##  6. <a name='GanttChart'></a>Gantt Chart
 
 [Link](https://docs.google.com/spreadsheets/d/18YNVB-EbJJxHQ7TgGCrHxtCeOkt0s-LmVG50PYV-BY0/edit?usp=sharing)
 
-##  6. <a name='ContributionTable'></a>Contribution Table
+##  7. <a name='ContributionTable'></a>Contribution Table
 
 | Name | Proposal Contributions |
 |---|---|
@@ -318,7 +323,7 @@ Fine-tuning BERT shows a much reasonable F1 score of 0.77, where the original mo
 | Lex | Supervised methods (SVC, logistic, k-means classifier)  |
 | Yuto | Top2Vec |
 
-##  7. <a name='References'></a>References
+##  8. <a name='References'></a>References
 
 - [1] D. Küçük and F. Can, “Stance Detection,” ACM Computing Surveys, vol. 53, no. 1, pp. 1–37, Feb. 2020, doi: <https://doi.org/10.1145/3369026>.
 - [2] S. M. Mohammad, P. Sobhani, and S. Kiritchenko, “Stance and Sentiment in Tweets,” ACM Transactions on Internet Technology, vol. 17, no. 3, pp. 1–23, Jul. 2017, doi: <https://doi.org/10.1145/3003433>.
