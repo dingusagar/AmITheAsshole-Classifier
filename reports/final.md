@@ -57,7 +57,7 @@ If successful, we think this project can be adapted to a version of “Grammarly
 1. Act as an automated tone checker for writing
 2. Explain why and how to adjust your writing to meet a tone
 
-This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling. The we discuss our training efforts on unsupervised methods and finally on how we integrated an open sourced LLM for generating the explanations. 
+This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling. Then we discuss our training efforts on unsupervised methods and finally on how we integrated an open sourced LLM for generating the explanations. 
 
 ##  3. <a name='Dataset'></a>Dataset
 
