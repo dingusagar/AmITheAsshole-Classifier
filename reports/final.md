@@ -3,7 +3,6 @@
 # Final Report
 
 <!-- vscode-markdown-toc -->
-	* 1. [[Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/final)](#Homehttps:dingusagar.github.iocs7641-projectProposalhttps:dingusagar.github.iocs7641-projectreportsproposalMidtermReporthttps:dingusagar.github.iocs7641-projectreportsmidtermMidtermReporthttps:dingusagar.github.iocs7641-projectreportsfinal)
 * 1. [Introduction/Background](#IntroductionBackground)
 * 2. [Problem Definition](#ProblemDefinition)
 * 3. [Dataset](#Dataset)
@@ -25,10 +24,10 @@
 		* 4.3.2. [Logistic Regression](#LogisticRegression)
 		* 4.3.3. [K-Means Classifier](#K-MeansClassifier)
 		* 4.3.4. [Pretrained Sentiment Model](#PretrainedSentimentModel)
-		* 4.3.5. [Fine-Tuned BERT](#FineTunedBERT)
-    * 4.3.6. [LLM for Explanation Generation](#ExplanationGeneration)	
+		* 4.3.5. [Fine-tuned BERT](#Fine-tunedBERT)
+		* 4.3.6. [LLM for Explanation Generation](#LLMforExplanationGeneration)
 		* 4.3.7. [Discussion for Supervised](#DiscussionforSupervised)
-* 5. [Next Steps](#GanttChart)
+* 5. [Next Steps](#NextSteps)
 * 6. [Gantt Chart](#GanttChart)
 * 7. [Contribution Table](#ContributionTable)
 * 8. [References](#References)
@@ -52,15 +51,15 @@ Checkout our webapp which is live [here](https://huggingface.co/spaces/dingusaga
 
 ##  2. <a name='ProblemDefinition'></a>Problem Definition
 
-The main focus of our project : 
-1. Develop ML model to process user submitted life situations similar to the posts from the AITA subreddit, and classify as `YTA (You are the A*hole)` or `(NTA) Not the A*hole` based on the situation described by the user. 
-2. Generate an constructive explanation for why the user was classified as `YTA` or `NTA` based on the described situation. 
+The main focus of our project :
+1. Develop ML model to process user submitted life situations similar to the posts from the AITA subreddit, and classify as `YTA (You are the A*hole)` or `(NTA) Not the A*hole` based on the situation described by the user.
+2. Generate an constructive explanation for why the user was classified as `YTA` or `NTA` based on the described situation.
 
-If successful, we think this project can be adapted to a version of “Grammarly” but for writing tone which has the following features : 
+If successful, we think this project can be adapted to a version of “Grammarly” but for writing tone which has the following features :
 1. Act as an automated tone checker for writing
 2. Explain why and how to adjust your writing to meet a tone
 
-This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling. Then we discuss our training efforts on unsupervised methods and finally on how we integrated an open sourced LLM for generating the explanations. 
+This report explains the usage of data preprocessing and unsupervised learning for EDA, detailing the efforts and attempts to classify the text using K-means clustering, Gaussian mixture models, and topic modeling. Then we discuss our training efforts on unsupervised methods and finally on how we integrated an open sourced LLM for generating the explanations.
 
 ##  3. <a name='Dataset'></a>Dataset
 
@@ -233,7 +232,7 @@ To establish a baseline on transformer models, we tried out a pretrained bert mo
 
 ![confusion_matrix_pretrained_sentiment](../img/confusion_matrix_pretrained_sentiment.png)
 
-####  4.3.5 <a name='FineTunedBERT'></a>Fine-tuned BERT
+####  4.3.5. <a name='Fine-tunedBERT'></a>Fine-tuned BERT
 
 Given the complex relation of the data and labels, we decided to leverage the capabilities of pretrained models, specifically BERT for sentiment analysis.
 
@@ -262,21 +261,21 @@ Note that our model used the early stopped model near the 10th iteration.
 
 ![alt text](../img/bert-confusion.png)
 
-####  4.3.6. <a name='ExplanationGeneration'></a>LLM for Explanation Generation
-We thought it would be interesting to generate an explanation for the predicted class similar to how real users would comment on the `r/AmItheA*hole` subreddit. We experimented a few open sourced LLMs using the `ollama` inference engine that can allow us to deploy on a cheap server without GPUs. The LLMs include - `llama3.2:3b`, `llama3.2:1b` and some quantized versions like `llama3.2:1b-instruct-q4_K_M` , `llama3.2:3b-instruct-q3_K_M` etc. The 1 billion models were poor at following the instructions. We finally went with the 3 billion parameter model (`llama3.2:3b`) whose explanations seemed reasonable. 
+####  4.3.6. <a name='LLMforExplanationGeneration'></a>LLM for Explanation Generation
+We thought it would be interesting to generate an explanation for the predicted class similar to how real users would comment on the `r/AmItheA*hole` subreddit. We experimented a few open sourced LLMs using the `ollama` inference engine that can allow us to deploy on a cheap server without GPUs. The LLMs include - `llama3.2:3b`, `llama3.2:1b` and some quantized versions like `llama3.2:1b-instruct-q4_K_M` , `llama3.2:3b-instruct-q3_K_M` etc. The 1 billion models were poor at following the instructions. We finally went with the 3 billion parameter model (`llama3.2:3b`) whose explanations seemed reasonable.
 
-The llama models were too nice in it's explanations and would often tag the situations as `NTA`. We suspect it is due to the safety allignments that went in during it's training phase. To give an accurate classification and explanation for this task, we designed a hybrid system, where the class of `YTA` or `NTA` will be predicted by our finetuned BERT model, and the explanation would be generated by the llama model conditioned on the predicted class label from BERT. 
+The llama models were too nice in it's explanations and would often tag the situations as `NTA`. We suspect it is due to the safety allignments that went in during it's training phase. To give an accurate classification and explanation for this task, we designed a hybrid system, where the class of `YTA` or `NTA` will be predicted by our finetuned BERT model, and the explanation would be generated by the llama model conditioned on the predicted class label from BERT.
 
-The instruction prompt for the llama model looks like this :  
+The instruction prompt for the llama model looks like this :
 ```py
 prompt = f"""
-### You know about the subreddit community r/AmItheAsshole. In this community people post their life situations and ask if they are the asshole or not. 
-The community uses the following acronyms. 
-AITA : Am I the asshole? Usually posted in the question. 
-YTA : You are the asshole in this situation.  
+### You know about the subreddit community r/AmItheAsshole. In this community people post their life situations and ask if they are the asshole or not.
+The community uses the following acronyms.
+AITA : Am I the asshole? Usually posted in the question.
+YTA : You are the asshole in this situation.
 NTA : You are not the asshole in this situation.
 
-### The task for you explain why a particular situation was tagged as NTA or YTA by most users. I will give the situation as well as the NTA or YTA tag. just give your explanation for the label. Be nice but give a brutally honest and unbiased view. Base your explanation entirely on the given text and the label tag only. Do not assume anything extra.  
+### The task for you explain why a particular situation was tagged as NTA or YTA by most users. I will give the situation as well as the NTA or YTA tag. just give your explanation for the label. Be nice but give a brutally honest and unbiased view. Base your explanation entirely on the given text and the label tag only. Do not assume anything extra.
 Use second person terms like you in the explanation.
 
 ### Situation :  {question}
@@ -284,13 +283,13 @@ Use second person terms like you in the explanation.
 ### Explanation for {predicted_class_from_bert} :"""
 ```
 
-An example using this hybrid approach: 
+An example using this hybrid approach:
 ```
-Question : I told my kid that she should become an engineer like me, she is into painting and wants to pursue arts. AITA? 
+Question : I told my kid that she should become an engineer like me, she is into painting and wants to pursue arts. AITA?
 Bert Prediction :  You are the A**hole (YTA) with confidence 88.18%
 Explanation from Llama : In this situation, you are likely tagged as YTA because you discouraged your child from pursuing her passion for art, which may have led to disappointment and potentially hindered her self-expression. By strongly suggesting that she follow in your footsteps and become an engineer, you may have imposed your own career goals on your child without considering her interests or desires. This could be perceived as dismissive of her artistic aspirations and not supportive of her individuality.
 ```
-The explanation is reasonable but it does not sound like the tone of the users' comments in the subreddit which are more casual and to the point.  An interesting future work beyond the scope of this semester project would be instruction-finetune this model on our dataset. 
+The explanation is reasonable but it does not sound like the tone of the users' comments in the subreddit which are more casual and to the point.  An interesting future work beyond the scope of this semester project would be instruction-finetune this model on our dataset.
 
 ####  4.3.7. <a name='DiscussionforSupervised'></a>Discussion for Supervised
 
@@ -304,8 +303,8 @@ This shows us that our problem is non trivial where we can use a sentiment model
 Fine-tuning BERT shows a much reasonable F1 score of 0.77, where the original model is a binary classifier where it predicits sentiment as labels `1` for `positive` and `0` for `negative`. Given that the `negative` label can be mapped into our dataset's `yta` label, it performed reasonably well on random examples from Reddit. For example, our classifier model predicted [this post](https://www.reddit.com/r/AmItheAsshole/comments/1gw9o5g/aita_for_defending_my_daughters_comments_towards/) as `yta` with `0.81` confidence and [this post](https://www.reddit.com/r/AmItheAsshole/comments/1gwl76e/aitah_for_refusing_to_let_my_moms_boyfriend_walk/) as `nta` with `0.98` confidence. The complexity of the given task having long paragraphs of input text required a much advanced model to capture the sentiment.
 
 ##  5. <a name='NextSteps'></a>Next Steps
-Our best model combination is using finetuned BERT for classification along with `llama3.2 3B` for explanation generation for the class label. The `llama3.2 3B` model is still big to be hosted on a cpu server. Also the the llama model sometimes reponds with "I won't be able to help with that" kind of responses. 
-A future direction could be instruction finetuning the smallest variant of llama model with 1B parameters. We could also look at combining the finetuning of BERT with the llama with a single loss function. Our initial idea of adapting the project to an automatic tone checker for writing is not explored in depth, so that's something we could explore further which can add a lot of value. We could also look at semi-supervised training approaches by combining the results of topic modelling and clustering with the finetuning of BERT and LLMs. These are some of the potential future directions which are interesting to explore. 
+Our best model combination is using finetuned BERT for classification along with `llama3.2 3B` for explanation generation for the class label. The `llama3.2 3B` model is still big to be hosted on a cpu server. Also the the llama model sometimes reponds with "I won't be able to help with that" kind of responses.
+A future direction could be instruction finetuning the smallest variant of llama model with 1B parameters. We could also look at combining the finetuning of BERT with the llama with a single loss function. Our initial idea of adapting the project to an automatic tone checker for writing is not explored in depth, so that's something we could explore further which can add a lot of value. We could also look at semi-supervised training approaches by combining the results of topic modelling and clustering with the finetuning of BERT and LLMs. These are some of the potential future directions which are interesting to explore.
 
 ##  6. <a name='GanttChart'></a>Gantt Chart
 
