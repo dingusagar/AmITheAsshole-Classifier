@@ -26,7 +26,7 @@
 		* 4.3.3. [K-Means Classifier](#K-MeansClassifier)
 		* 4.3.4. [Pretrained Sentiment Model](#PretrainedSentimentModel)
 		* 4.3.5. [Fine-Tuned BERT](#FineTunedBERT)
-    * 4.3.6. [LLM for Explanation Generation](#ExplanationGeneration)	
+    		* 4.3.6. [LLM for Explanation Generation](#ExplanationGeneration)	
 		* 4.3.7. [Discussion for Supervised](#DiscussionforSupervised)
 * 5. [Gantt Chart](#GanttChart)
 * 6. [Contribution Table](#ContributionTable)
