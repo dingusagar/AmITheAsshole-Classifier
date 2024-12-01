@@ -312,15 +312,15 @@ A future direction could be instruction finetuning the smallest variant of llama
 
 ##  7. <a name='ContributionTable'></a>Contribution Table
 
-| Name | Proposal Contributions |
+| Name | Contributions |
 |---|---|
 | All | Writeup and discussion |
 | All | References |
 | Dingu | BERTopic, distilBERT sentiment model, explanation generation with Llama, live deployement |
-| Ethan | Data organization and cleaning, K-means clustering |
+| Ethan | Data organization and cleaning, K-means clustering, Video presentation |
 | Kyu Yeon | Clustering, Gaussian Mixture, BERT fine-tuning |
-| Lex | Supervised methods (SVC, logistic, k-means classifier)  |
-| Yuto | Top2Vec |
+| Lex | Supervised methods (SVC, logistic, k-means classifier), BERT fine-tuning |
+| Yuto | Top2Vec, BERT fine-tuning |
 
 ##  8. <a name='References'></a>References
 
