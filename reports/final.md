@@ -2,6 +2,10 @@
 
 # Final Report
 
+[![Proposal Video](https://drive.usercontent.google.com/download?id=1vBJ47eWVz8wLDwqlcBGj352zZgHppNcT_&export=view&authuser=0)](https://youtu.be/6OGZTlKmxkM)
+
+## Contents
+
 <!-- vscode-markdown-toc -->
 * 1. [Introduction/Background](#IntroductionBackground)
 * 2. [Problem Definition](#ProblemDefinition)
