@@ -15,7 +15,7 @@
 		* 4.1.2. [Word Embedding](#WordEmbedding)
 	* 4.2. [Unsupervised Learning](#UnsupervisedLearning)
 		* 4.2.1. [Visualization Using PCA & t-SNE](#VisualizationUsingPCAt-SNE)
-		* 4.2.2. [Clustering: K-means and Gaussian](#Clustering:K-meansandGaussian)
+		* 4.2.2. [Clustering K-means and Gaussian](#ClusteringK-meansandGaussian)
 		* 4.2.3. [Top2Vec](#Top2Vec)
 		* 4.2.4. [BERTopic](#BERTopic)
 		* 4.2.5. [Discussion - Unsupervised](#Discussion-Unsupervised)
@@ -109,7 +109,7 @@ For `body` embeddings, the datapoints rather looked randomly scattered.
 
 ![2d-body](../img/2d-body.png)
 
-####  4.2.2. <a name='Clustering:K-meansandGaussian'></a>Clustering: K-means and Gaussian
+####  4.2.2. <a name='ClusteringK-meansandGaussian'></a>Clustering K-means and Gaussian
 
 K-Means clustering was used as an exploratory tool to detect potential natural groupings in the data without label supervision. Namely, it was applied to the goal of identifying inherent patterns in the AITA posts that could reveal how the language used in different posts aligns with the `yta` or `nta` labels. The Gaussian mixture models were chosen for their ability to model data distributions more flexibly than K-Means by assuming that data points were generated from a mixture of several Gaussian distributions. This approach offers an advantage for detecting soft clusters, where each post could belong to multiple clusters with varying probabilities. This probabilistic nature allows for a better understanding of ambiguous cases in AITA posts, where the classification of `yta` or `nta` might not be straightforward.
 
