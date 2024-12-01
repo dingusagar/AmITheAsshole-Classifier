@@ -2,7 +2,7 @@
 
 # Final Report
 
-[![Proposal Video](https://drive.usercontent.google.com/download?id=1vBJ47eWVz8wLDwqlcBGj352zZgHppNcT_&export=view&authuser=0)](https://youtu.be/6OGZTlKmxkM)
+[![Final Presentation Video](https://drive.usercontent.google.com/download?id=1vBJ47eWVz8wLDwqlcBGj352zZgHppNcT_&export=view&authuser=0)](https://youtu.be/6OGZTlKmxkM)
 
 ## Contents
 
