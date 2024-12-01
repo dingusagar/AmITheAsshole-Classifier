@@ -1,4 +1,4 @@
-### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Final Report](https://dingusagar.github.io/cs7641-project/reports/final)
+### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Final Report](https://dingusagar.github.io/cs7641-project/reports/final) | [Web App](https://huggingface.co/spaces/dingusagar/aita-classifier)
 
 # Midterm Report
 
