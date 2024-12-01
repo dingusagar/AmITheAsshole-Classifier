@@ -15,7 +15,7 @@
 		* 4.1.2. [Word Embedding](#WordEmbedding)
 	* 4.2. [Unsupervised Learning](#UnsupervisedLearning)
 		* 4.2.1. [Visualization Using PCA & t-SNE](#VisualizationUsingPCAt-SNE)
-		* 4.2.2. [Clustering: K-means and Gaussian](#Clustering:K-meansandGaussian)
+		* 4.2.2. [Clustering K-means and Gaussian](#ClusteringK-meansandGaussian)
 		* 4.2.3. [Top2Vec](#Top2Vec)
 		* 4.2.4. [BERTopic](#BERTopic)
 		* 4.2.5. [Discussion - Unsupervised](#Discussion-Unsupervised)
@@ -109,7 +109,7 @@ For `body` embeddings, the datapoints rather looked randomly scattered.
 
 ![2d-body](../img/2d-body.png)
 
-####  4.2.2. <a name='Clustering:K-meansandGaussian'></a>Clustering: K-means and Gaussian
+####  4.2.2. <a name='ClusteringK-meansandGaussian'></a>Clustering K-means and Gaussian
 
 K-Means clustering was used as an exploratory tool to detect potential natural groupings in the data without label supervision. Namely, it was applied to the goal of identifying inherent patterns in the AITA posts that could reveal how the language used in different posts aligns with the `yta` or `nta` labels. The Gaussian mixture models were chosen for their ability to model data distributions more flexibly than K-Means by assuming that data points were generated from a mixture of several Gaussian distributions. This approach offers an advantage for detecting soft clusters, where each post could belong to multiple clusters with varying probabilities. This probabilistic nature allows for a better understanding of ambiguous cases in AITA posts, where the classification of `yta` or `nta` might not be straightforward.
 
@@ -156,7 +156,7 @@ The Top2Vec model trained on body with epsilon=0.2 outputted the most meaningful
 ![topics-gif-aita](../img/bertopic.png)
 BERTopic is a topic modeling technique that leverages transformer-based embeddings (like BERT) to create dense representations of documents and uses clustering techniques (such as HDBSCAN) to discover topics in textual data. It excels in generating dynamic, interpretable topics while handling complex, high-dimensional text data. With respect to the AITA dataset, there was a need to understand more nuanced relationships between words and the context surrounding it. The questions and corresponding descriptions posted on the r/AITA subreddit are often heavily laden with context and colloquial language differences. Using a model like BERTopic helped ensure that the semantic meaning was reasonably captured.
 
-We experimented the topic modelling algo on reddit post titles, descriptions and title + descriptions. We used embedding model [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). The bertopic worked better when we gave only titles. Running on the entire dataset, we got around 900 meaningful topics. There were also noise topics like the first topic `wibta_if_my`. We plan to experiment with and without removing the outlier topics during our sueprvised learning stage of the project.  Interestingly giving the decriptions to the BERTopic made the topics less interesting since most of the topics were contaminated with stop words.
+We experimented the topic modelling algo on reddit post titles, descriptions and title + descriptions. We used embedding model [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). The bertopic worked better when we gave only titles. Running on the entire dataset, we got around 900 meaningful topics. There were also noise topics like the first topic `wibta_if_my`. We plan to experiment with and without removing the outlier topics during our supervised learning stage of the project.  Interestingly giving the decriptions to the BERTopic made the topics less interesting since most of the topics were contaminated with stop words.
 
 ####  4.2.5. <a name='Discussion-Unsupervised'></a>Discussion - Unsupervised
 
@@ -264,7 +264,7 @@ Note that our model used the early stopped model near the 10th iteration.
 ####  4.3.6. <a name='LLMforExplanationGeneration'></a>LLM for Explanation Generation
 We thought it would be interesting to generate an explanation for the predicted class similar to how real users would comment on the `r/AmItheA*hole` subreddit. We experimented a few open sourced LLMs using the `ollama` inference engine that can allow us to deploy on a cheap server without GPUs. The LLMs include - `llama3.2:3b`, `llama3.2:1b` and some quantized versions like `llama3.2:1b-instruct-q4_K_M` , `llama3.2:3b-instruct-q3_K_M` etc. The 1 billion models were poor at following the instructions. We finally went with the 3 billion parameter model (`llama3.2:3b`) whose explanations seemed reasonable.
 
-The llama models were too nice in it's explanations and would often tag the situations as `NTA`. We suspect it is due to the safety allignments that went in during it's training phase. To give an accurate classification and explanation for this task, we designed a hybrid system, where the class of `YTA` or `NTA` will be predicted by our finetuned BERT model, and the explanation would be generated by the llama model conditioned on the predicted class label from BERT.
+The llama models were too nice in it's explanations and would often tag the situations as `NTA`. We suspect it is due to the safety alignments that went in during it's training phase. To give an accurate classification and explanation for this task, we designed a hybrid system, where the class of `YTA` or `NTA` will be predicted by our finetuned BERT model, and the explanation would be generated by the llama model conditioned on the predicted class label from BERT.
 
 The instruction prompt for the llama model looks like this :
 ```py
