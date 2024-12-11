@@ -39,7 +39,7 @@ RUN pip3 install ollama
 RUN pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
 RUN pip install gradio transformers
 # Copy your Python application
-COPY app-old.py $HOME/app/app.py
+COPY app.py $HOME/app/app.py
 
 # Expose the Ollama server port
 EXPOSE 11434
