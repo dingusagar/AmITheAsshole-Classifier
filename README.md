@@ -1,6 +1,6 @@
 ### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Final Report](https://dingusagar.github.io/cs7641-project/reports/final) | [Web App](https://huggingface.co/spaces/dingusagar/aita-classifier)
 
-# AITA Classifier
+# AmITheAsshole Classifier
 
 #### What is this project about? 
 `r/AmItheA*hole` (AITA) is a reddit community where users seek judgment on whether their actions were that of an `A*hole` or not. Posts are classified as either negative (the `A*hole`) or positive (not the `A*hole`). 
