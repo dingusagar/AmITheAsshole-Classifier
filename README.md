@@ -1,31 +1,25 @@
-Based on the following requirement: 
-"""
-2. GitHub Repository: Reuse the GitHub repository from the proposal, and add all relevant directories, files, and code. Include a README.md file explaining all relevant directories and files using the format below.
+# AITA Classifier
 
-/dir/: Description of the directory
-/dir/file.txt: Description of the file
-"""
-... we have added a README.md file to explain each directory / files.
-
-# Code
+### Project Files
+#### Code
 All code can be found in `notebooks/`.
 
-# Images
+#### Images
 All generated images can be found in `img/`.
 
-# Dataset
+#### Dataset
 All datasets can be found in `data/`.
 
-# Reports
+#### Reports
 All reports can be found in `reports/`
 
 We now explain each folder.
 -----------
-## `reports/`
+#### `reports/`
 - `midterm.md`: This is our midterm report, following the requirements of the class.
 - `proposal.md`: This is our proposal report, following the requirements of the class.
 
-## `notebooks/`
+#### `notebooks/`
 - `visualizations.ipynb`: visualizations using PCA, TSNE, GMM. We tried to see if they produced useful decision boundaries, but unfortunately not so much.
 - `top2vec.kpynb`: Here we used Top2Vec to see if we could find any patterns in the topics of our classifications. Some interesting topic clusterings, but did not help much in our classification problem.
 - `requirements.txt`: Requirements file.
@@ -38,10 +32,10 @@ We now explain each folder.
 - `topic_modeling/`: Here we use BERTTopic to do some topic modeling.
 - `topic_modeling/topic-modeling-berttopic.ipynb`: Using BERTTopic to see what topics are generated.
 
-## `img/`
+#### `img/`
 - There are many images here. The title should tell you what they are. 
 
-## `data/`
+#### `data/`
 - `aita_balanced_downsampled.csv`: Our dataset was initialially imbalanced, so we made it balanced via downsampling. We will do tests using this dataset; if it is not so great, we may revert back to the original dataset.
 - `clean_data.py`: For cleaning our raw dataset.
 - `pull_data.sh`: For downloading the dataset.
