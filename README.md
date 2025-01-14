@@ -4,4 +4,5 @@
 `r/AmItheA*hole` (AITA) is a reddit community where users seek judgment on whether their actions were that of an `A*hole` or not. Posts are classified as either negative (the `A*hole`) or positive (not the `A*hole`). Our project aims to create an AI model that classifies and generates explanation on a given user story whether their actions were right or wrong for the life situation they describes. 
 
 Checkout the webapp deployed on [Huggingface Space](https://huggingface.co/spaces/dingusagar/aita-classifier)
+
 Checkout the final project report [here](https://dingusagar.github.io/cs7641-project/reports/final)
