@@ -1,6 +1,6 @@
 ### [Home](https://dingusagar.github.io/cs7641-project/) |  [Proposal](https://dingusagar.github.io/cs7641-project/reports/proposal)  | [Midterm Report](https://dingusagar.github.io/cs7641-project/reports/midterm) | [Final Report](https://dingusagar.github.io/cs7641-project/reports/final) | [Web App](https://huggingface.co/spaces/dingusagar/aita-classifier)
 
-Checkout the webapp deployed on [Huggingface Space]((https://huggingface.co/spaces/dingusagar/aita-classifier))
+Checkout the webapp deployed on [Huggingface Space](https://huggingface.co/spaces/dingusagar/aita-classifier)
 
 # Final Report
 [![Final Presentation Video](https://drive.usercontent.google.com/download?id=1M6AyaTYS5-P9g2D24B4zHrt0EF55YYo1_&export=view&authuser=0)](https://youtu.be/6OGZTlKmxkM)
