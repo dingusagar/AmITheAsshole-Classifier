@@ -5,4 +5,7 @@
 
 Checkout the webapp deployed on [Huggingface Space](https://huggingface.co/spaces/dingusagar/aita-classifier)
 
-Checkout the final project report [here](https://dingusagar.github.io/cs7641-project/reports/final)
+Checkout the final project video by clicking below. 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6OGZTlKmxkM/0.jpg)](https://www.youtube.com/watch?v=6OGZTlKmxkM)
+
+The final report can be found [here](https://dingusagar.github.io/cs7641-project/reports/final)
